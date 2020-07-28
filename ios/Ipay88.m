@@ -37,12 +37,7 @@ RCT_EXPORT_METHOD(
         self.paymentView = [self.paymentsdk checkout:self.payment];
         
         UIViewController *ctrl = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-        
-        UIViewController *popupScreen = [[UIViewController alloc] init];
-        
-        [ctrl presentModalViewController:popupScreen animated:YES];
-        
-        [popupScreen.view addSubview:self.paymentView];
+        [ctrl.view addSubview:self.paymentView];
     });
     // TODO: Implement some actually useful functionality
     //callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);
