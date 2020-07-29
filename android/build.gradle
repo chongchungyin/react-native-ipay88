@@ -53,6 +53,11 @@ android {
     lintOptions {
         abortOnError false
     }
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
 }
 
 repositories {
