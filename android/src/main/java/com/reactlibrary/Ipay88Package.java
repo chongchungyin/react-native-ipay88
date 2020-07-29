@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.axolot.ipay88;
 
 import java.util.Arrays;
 import java.util.Collections;

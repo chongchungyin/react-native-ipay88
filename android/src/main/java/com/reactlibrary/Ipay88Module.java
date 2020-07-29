@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.axolot.ipay88;
 
 import android.app.Activity;
 import android.content.Intent;
