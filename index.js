@@ -86,7 +86,6 @@ const Pay = (data) => {
     productDescription = "",
     userName = "",
     userEmail = "",
-    userContact = "",
     // remark = '', // optional
     // utfLang = '', // optional
     country = "",
@@ -104,7 +103,6 @@ const Pay = (data) => {
     errors.productDescription = "`productDescription` is required";
   if (userName === "") errors.userName = "`userName` is required";
   if (userEmail === "") errors.userEmail = "`userEmail` is required";
-  if (userContact === "") errors.userContact = "`userContact` is required";
   // if (remark === '') errors.remark = '`remark` is required'; // optional
   // if (utfLang === '') errors.utfLang = '`utfLang` is required'; // optional
   if (country === "") errors.country = "`country` is required";

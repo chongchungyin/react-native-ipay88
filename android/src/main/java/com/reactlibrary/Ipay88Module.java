@@ -54,25 +54,29 @@ public class Ipay88Module extends ReactContextBaseJavaModule {
         reactContext = getReactApplicationContext();
 
         // Precreate payment
-        IPayIHPayment payment = new IPayIHPayment();
-        payment.setMerchantKey(data.getString("merchantKey"));
-        payment.setMerchantCode(data.getString("merchantCode"));
-        payment.setPaymentId(data.getString("paymentId"));
-        payment.setCurrency(data.getString("currency"));
-        payment.setRefNo(data.getString("referenceNo"));
-        payment.setAmount(data.getString("amount"));
-        payment.setProdDesc(data.getString("productDescription"));
-        payment.setUserName(data.getString("userName"));
-        payment.setUserEmail(data.getString("userEmail"));
-        payment.setUserContact(data.getString("userContact"));
-        payment.setRemark(data.getString("remark"));
-        payment.setLang(data.getString("utfLang"));
-        payment.setCountry(data.getString("country"));
-        payment.setBackendPostURL(data.getString("backendUrl"));
+        try {
+            IPayIHPayment payment = new IPayIHPayment();
+            payment.setMerchantKey(data.getString("merchantKey"));
+            payment.setMerchantCode(data.getString("merchantCode"));
+            payment.setPaymentId(data.getString("paymentId"));
+            payment.setCurrency(data.getString("currency"));
+            payment.setRefNo(data.getString("referenceNo"));
+            payment.setAmount(data.getString("amount"));
+            payment.setProdDesc(data.getString("productDescription"));
+            payment.setUserName(data.getString("userName"));
+            payment.setUserEmail(data.getString("userEmail"));
+            payment.setRemark(data.getString("remark"));
+            payment.setLang(data.getString("utfLang"));
+            payment.setCountry(data.getString("country"));
+            payment.setBackendPostURL(data.getString("backendUrl"));
 
-        Intent checkoutIntent = IPayIH.getInstance().checkout(payment, reactContext, new ResultDelegate(), IPayIH.PAY_METHOD_CREDIT_CARD);
-        reactContext.addActivityEventListener(mActivityEventListener);
-        reactContext.startActivityForResult(checkoutIntent, PAY_REQUEST_ID, null);
+            Intent checkoutIntent = IPayIH.getInstance().checkout(payment, reactContext, new ResultDelegate(), IPayIH.PAY_METHOD_CREDIT_CARD);
+            reactContext.addActivityEventListener(mActivityEventListener);
+            reactContext.startActivityForResult(checkoutIntent, PAY_REQUEST_ID, null);
+        }
+        catch (Exception e) {
+            sendEventAndRemoveContext("ipay88:failed", null);
+        }
     }
 
     static public class ResultDelegate implements IPayIHResultDelegate, Serializable {
